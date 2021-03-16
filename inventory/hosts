@@ -1,4 +1,4 @@
 [agents]
-192.168.1.145
-192.168.2.216
-192.168.1.129
+192.168.1.145 ansible_python_interpreter=/usr/bin/python3
+192.168.2.216 ansible_python_interpreter=/usr/bin/python3
+192.168.1.129 ansible_python_interpreter=/usr/bin/python3
