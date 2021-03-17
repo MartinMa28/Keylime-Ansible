@@ -14,3 +14,9 @@ ssh_args=-o ForwardAgent=yes
 '''
 ansible_python_interpreter=/usr/bin/python3
 '''
+
+## To run the keylime playbook
+
+'''
+ansible-playbook ./playbooks/keylime_playbook.yml
+'''
