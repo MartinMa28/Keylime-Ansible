@@ -1,7 +1,8 @@
 ---
 - name: install keylime
   hosts: all
-  remote_user: root
+  remote_user: fedora
+  become: true
 
   tasks:
     - name: install keylime and its dependencies
