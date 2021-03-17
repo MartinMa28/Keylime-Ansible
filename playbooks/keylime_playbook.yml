@@ -8,7 +8,9 @@
     - name: install keylime and its dependencies
       dnf:
         name: '{{ item }}'
-        state: present
+        state: latest
+        update_only: yes
+        update_cache: yes
       loop:
         - keylime
         - wget
