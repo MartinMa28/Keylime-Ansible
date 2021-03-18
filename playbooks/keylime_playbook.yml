@@ -6,7 +6,7 @@
 
   tasks:
     - name: install keylime and its dependencies
-      tags: keylime
+      tags: keylime_agent
       dnf:
         name: '{{ item }}'
         state: latest
@@ -27,7 +27,7 @@
 
   tasks:
     - name: install swtpm and its dependencies
-      tags: swtpm
+      tags: swtpm,keylime_agent
       dnf:
         name: '{{ item }}'
         state: latest
@@ -40,10 +40,17 @@
         - swtpm-tools
 
     - name: copy swtpm bootstrap script
-      tags: swtpm
+      tags: swtpm,keylime_agent
       copy:
         src: swtpm.sh
         dest: /root/swtpm.sh
         owner: root
         group: root
         mode: 0755
+
+    - name: Customize keylime config file
+      tags: keylime_agent
+      lineinfile:
+        path: /etc/keylime.conf
+        regexp: '^cloudagent_ip = *'
+        line: cloudagent_ip = 0.0.0.0
