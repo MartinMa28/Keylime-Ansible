@@ -50,14 +50,21 @@
 
     - name: customize keylime agent ip
       tags: keylime_agent,keylime_agent_config
-      lineinfile:
+      replace:
         path: /etc/keylime.conf
         regexp: '^cloudagent_ip = *'
-        line: cloudagent_ip = 0.0.0.0
+        replace: cloudagent_ip = 0.0.0.0
 
     - name: set require_ek_cert to false
       tags: keylime_agent,keylime_agent_config
-      lineinfile:
+      replace:
         path: /etc/keylime.conf
         regexp: '^require_ek_cert ='
-        line: require_ek_cert = False
+        replace: require_ek_cert = False
+
+    - name: customize keylime registrar ip
+      tags: keylime_agent,keylime_agent_config
+      replace:
+        path: /etc/keylime.conf
+        regexp: '^registrar_ip = *'
+        replace: registrar_ip = '{{ registrar_ip }}'
