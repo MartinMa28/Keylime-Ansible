@@ -48,9 +48,16 @@
         group: root
         mode: 0755
 
-    - name: Customize keylime config file
-      tags: keylime_agent
+    - name: customize keylime agent ip
+      tags: keylime_agent,keylime_agent_config
       lineinfile:
         path: /etc/keylime.conf
         regexp: '^cloudagent_ip = *'
         line: cloudagent_ip = 0.0.0.0
+
+    - name: set require_ek_cert to false
+      tags: keylime_agent,keylime_agent_config
+      lineinfile:
+        path: /etc/keylime.conf
+        regexp: '^require_ek_cert ='
+        line: require_ek_cert = False
