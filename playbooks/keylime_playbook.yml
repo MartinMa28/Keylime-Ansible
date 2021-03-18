@@ -72,3 +72,11 @@
         regexp: '^registrar_ip = *'
         line: registrar_ip = {{ registrar_ip }}
         firstmatch: yes
+
+    - name: set uuid to hostname
+      tags: keylime_agent,keylime_agent_config
+      lineinfile:
+        path: /etc/keylime.conf
+        regexp: '^agent_uuid = *'
+        line: agent_uuid = hostname
+        firstmatch: yes
