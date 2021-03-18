@@ -20,7 +20,7 @@
         - vim
         - iputils
 
-- name: install swtpm
+- name: install swtpm and set up keylime.conf for agents
   hosts: agents
   remote_user: fedora
   become: true
@@ -71,3 +71,20 @@
         regexp: '^registrar_ip = 127.0.0.1$'
         line: registrar_ip = '{{ registrar_ip }}'
         firstmatch: yes
+
+- name: run swtpm, keylime_ima_emulator, and keylime_agent
+  hosts: agents
+  remote_user: fedora
+  become: true
+
+  tasks:
+    - name: start service swtpm
+      tags: start_service
+      command: bash /root/swtpm.sh
+
+    - name: start service keylime
+      tags: start_service
+      service:
+        name: keylime_agent
+        state: started
+        enabled: yes
