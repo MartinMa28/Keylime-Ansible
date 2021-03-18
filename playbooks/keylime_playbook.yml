@@ -38,3 +38,12 @@
         - dbus-devel
         - swtpm
         - swtpm-tools
+
+    - name: copy swtpm bootstrap script
+      tags: swtpm
+      copy:
+        src: ./files/swtpm.sh
+        dest: /root/swtpm.sh
+        owner: root
+        group: root
+        mode: 0755
