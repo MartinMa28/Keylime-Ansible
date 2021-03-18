@@ -53,7 +53,7 @@
       lineinfile:
         path: /etc/keylime.conf
         regexp: '^cloudagent_ip = *'
-        replace: cloudagent_ip = 0.0.0.0
+        line: cloudagent_ip = 0.0.0.0
         firstmatch: yes
 
     - name: set require_ek_cert to false
@@ -61,7 +61,7 @@
       lineinfile:
         path: /etc/keylime.conf
         regexp: '^require_ek_cert = *'
-        replace: require_ek_cert = False
+        line: require_ek_cert = False
         firstmatch: yes
 
     - name: customize keylime registrar ip
@@ -69,5 +69,5 @@
       lineinfile:
         path: /etc/keylime.conf
         regexp: '^registrar_ip = 127.0.0.1$'
-        replace: registrar_ip = '{{ registrar_ip }}'
+        line: registrar_ip = '{{ registrar_ip }}'
         firstmatch: yes
