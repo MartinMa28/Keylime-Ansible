@@ -80,3 +80,26 @@
         regexp: '^agent_uuid = *'
         line: agent_uuid = hostname
         firstmatch: yes
+
+- name: run or stop swtpm, tpm2-abrmd, and keylime_agent
+  hosts: agents
+  remote_user: fedora
+  become: true
+
+  tasks:
+    - name: run swtpm and tpm2-abrmd in backgrond asynchronusly
+      tags: start_swtpm
+      shell: /root/swtpm.sh
+      async: 2592000
+      poll: 0
+
+    - name: run keylime_agent asynchronusly
+      tags: start_agent
+      shell: /usr/bin/keylime_agent
+      async: 2592000
+      poll: 0
+
+    - name: stop swtpm, tpm2-abrmd, and keylime_agent
+      tags: stop_all
+      shell: killall keylime_agent swtpm tpm2-abrmd --wait
+      ignore_errors: true
