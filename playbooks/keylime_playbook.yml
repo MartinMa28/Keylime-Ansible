@@ -10,7 +10,6 @@
       dnf:
         name: '{{ item }}'
         state: latest
-        update_only: yes
         update_cache: yes
       loop:
         - keylime
@@ -32,7 +31,6 @@
       dnf:
         name: '{{ item }}'
         state: latest
-        update_only: yes
         update_cache: yes
       loop:
         - dbus
