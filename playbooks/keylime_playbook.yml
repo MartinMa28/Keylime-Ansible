@@ -69,6 +69,6 @@
       tags: keylime_agent,keylime_agent_config
       lineinfile:
         path: /etc/keylime.conf
-        regexp: '^registrar_ip = 127.0.0.1$'
+        regexp: '^registrar_ip = *'
         line: registrar_ip = {{ registrar_ip }}
         firstmatch: yes
