@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x
 
 # Configure swtpm2
 mkdir /tmp/tpmdir
@@ -26,3 +25,4 @@ tpm2-abrmd \
     --tcti=swtpm: \
     --flush-all \
     --allow-root &
+
