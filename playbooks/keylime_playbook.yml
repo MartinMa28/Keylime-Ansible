@@ -6,6 +6,7 @@
 
   tasks:
     - name: install keylime and its dependencies
+      tags: keylime
       dnf:
         name: '{{ item }}'
         state: latest
@@ -19,3 +20,23 @@
         - openssl-devel
         - vim
         - iputils
+
+- name: install swtpm
+  hosts: agents
+  remote_user: fedora
+  become: true
+
+  tasks:
+    - name: install swtpm and its dependencies
+      tags: swtpm
+      dnf:
+        name: '{{ item }}'
+        state: latest
+        update_only: yes
+        update_cache: yes
+      loop:
+        - dbus
+        - dbus-daemon
+        - dbus-devel
+        - swtpm
+        - swtpm-tools
