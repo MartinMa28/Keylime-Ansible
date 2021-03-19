@@ -93,6 +93,12 @@
       async: 2592000
       poll: 0
 
+    - name: run keylime_ima_emulator in background asynchronusly
+      tags: start_swtpm
+      shell: /usr/bin/keylime_ima_emulator
+      async: 2592000
+      poll: 0
+
     - name: run keylime_agent asynchronusly
       tags: start_agent
       shell: /usr/bin/keylime_agent
