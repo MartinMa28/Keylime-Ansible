@@ -1,6 +1,6 @@
 #! /bin/bash
 
-declare -a instance_ip_addrs=('192.168.3.193' '192.168.2.203' '192.168.0.188' '192.168.1.206' '192.168.0.105' '192.168.2.191' '192.168.3.214' '192.168.1.240' '192.168.2.27' '192.168.3.81' '192.168.1.7' '192.168.1.113' '192.168.2.41' '192.168.0.242')
+declare -a instance_ip_addrs=('keylime_ansible_agent_10' 'keylime_ansible_agent_12' 'keylime_ansible_agent_11' 'keylime_ansible_agent_13' 'keylime_ansible_agent_14' 'keylime_ansible_agent_15' 'keylime_ansible_agent_16' 'keylime_ansible_agent_17' 'keylime_ansible_agent_18' 'keylime_ansible_agent_19' 'keylime_ansible_agent_20' 'keylime_ansible_agent_21' 'keylime_ansible_agent_22' 'keylime_ansible_agent_23')
 
 for ip_addr in "${instance_ip_addrs[@]}"
 do
